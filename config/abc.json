@@ -1,8 +1,8 @@
 [
   {
-  "module":"dirlister"
+  "module":"dirlister.py"
   },
   {
-  "module":"environment"
+  "module":"environment.py"
   }
 ]
